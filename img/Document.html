@@ -1,0 +1,113 @@
+
+<!-- saved from url=(0022)http://127.0.0.1:5500/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+		<title>Document</title>
+		<link rel="stylesheet" href="./Document_files/style.css">
+	</head>
+	<body>
+		<section class="container">
+			<div class="image-container">
+				<img draggable="false" id="image-id" src="./Document_files/hangman.png">
+			</div>
+
+			<div class="word-container">
+				<p class="noselect" id="on-screen-word"> </p>
+			</div>
+
+			<div class="letters-container">
+				<div class="letter noselect" id="c">c</div>
+				<div class="letter noselect" id="b">b</div>
+				<div class="letter noselect" id="a">a</div>
+				<div class="letter noselect" id="d">d</div>
+				<div class="letter noselect" id="e">e</div>
+				<div class="letter noselect" id="f">f</div>
+				<div class="letter noselect" id="g">g</div>
+				<div class="letter noselect" id="h">h</div>
+				<div class="letter noselect" id="i">i</div>
+				<div class="letter noselect" id="j">j</div>
+				<div class="letter noselect" id="k">k</div>
+				<div class="letter noselect" id="l">l</div>
+				<div class="letter noselect" id="m">m</div>
+				<div class="letter noselect" id="n">n</div>
+				<div class="letter noselect" id="o">o</div>
+				<div class="letter noselect" id="p">p</div>
+				<div class="letter noselect" id="q">q</div>
+				<div class="letter noselect" id="r">r</div>
+				<div class="letter noselect" id="s">s</div>
+				<div class="letter noselect" id="t">t</div>
+				<div class="letter noselect" id="u">u</div>
+				<div class="letter noselect" id="v">v</div>
+				<div class="letter noselect" id="w">w</div>
+				<div class="letter noselect" id="x">x</div>
+				<div class="letter noselect" id="y">y</div>
+				<div class="letter noselect" id="z">z</div>
+			</div>
+		</section>
+
+		<section class="menu-container show" id="menu-container" style="">
+			<div class="grey-out"></div>
+			<div id="menu-box" class="menu-box">
+				<div class="game-setup show" id="game-setup">
+					<h2>Choose a word</h2>
+					<input id="input" type="text" autocomplete="off"> 
+					<p class="btn-black go noselect" id="go">Go</p>
+				</div>
+				<div class="post-game" id="post-game-tab">
+					<h2 id="result"></h2>
+					<div class="answer" id="answer"></div>
+					<div class="stats">
+						<p>Time taken - 2:34</p>
+						<p id="lives-remaining"></p>
+					</div>
+					<img id="result-image" src="http://127.0.0.1:5500/" alt="">
+					<p class="btn-black noselect" id="play-again-btn">Play again</p>
+				</div>
+			</div>
+			
+		</section>
+
+
+
+		<script async="" src="./Document_files/game.js.download"></script>
+	<!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+</body></html>

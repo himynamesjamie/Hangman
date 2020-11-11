@@ -1,0 +1,51 @@
+get user input
+put userinput in array
+
+submit a letter
+    check if letter has already been used
+
+    check if letter is in chosenWord
+
+    if not then add to mystery word
+
+
+
+
+
+    onscreenword object
+
+    currentword
+
+    chosenword
+    #
+#333333
+
+
+
+openMenu(menu) {
+    add opacity0% to menu-container
+    add show menu-container
+    add show menu
+    add fade-in menu-container
+    remove opacity0% menu-container
+    remove fade-in menu-container
+}
+
+closeMenu(menu) {
+    add fade-out menu-container
+    remove show menu-container
+    remove fade-out menu-container
+}
+
+switchMenu(currentMenu, nextMenu) {
+    add fade-out currentMenu
+    remove show currentMenu
+    remove fade-out currentMenu
+    add opacity0% nextMenu
+    add show nextMenu
+    add fade-in nextMenu
+    remove add opacity0% nextMenu
+    remove fade-in nextMenu
+
+}
+
