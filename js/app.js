@@ -18,7 +18,6 @@ const gameSetupTab = document.getElementById('game-setup');
 const answer = document.getElementById('answer');
 const menuBox = document.getElementById('menu-box');
 
-
 var onScreenLives = document.getElementById('image-id');
 var resultImage = document.getElementById('result-image');
 
@@ -28,8 +27,6 @@ let keyboardObjects = [];
 const USED_LETTER = 'used letter';
 const LETTER_EXISTS = 'letter exists';
 const LETTER_DOES_NOT_EXIST = 'letter does not exist';
-
-
 
 const keyboardIds = [
 	'a',
@@ -60,8 +57,6 @@ const keyboardIds = [
 	'z',
 ];
 
-
-
 const addKeyboardEventListeners = () => {
 	for (let i = 0; i < keyboardIds.length; i++) {
 		keyboardObjects.push(document.getElementById(keyboardIds[i]));
@@ -76,8 +71,7 @@ const addKeyboardEventListeners = () => {
 			false
 		);
 	}
-}
-
+};
 
 const resetButtons = () => {
 	for (let i = 0; i < usedLetters.length; i++) {
@@ -88,7 +82,7 @@ const resetButtons = () => {
 			}
 		}
 	}
-}
+};
 
 const playAgainHandler = () => {
 	switchMenu(postGameTab, gameSetupTab, true);
@@ -100,7 +94,7 @@ const playAgainHandler = () => {
 	lives = 11;
 	usedLetters = [];
 	inputBox.classList.remove('close-input');
-}
+};
 
 const goHandler = () => {
 	if (inputBox.value) {
@@ -111,7 +105,7 @@ const goHandler = () => {
 	} else {
 		inputBox.placeholder = 'please enter a word!';
 	}
-}
+};
 
 const openMenu = (menu, fade) => {
 	if (fade) {
@@ -130,7 +124,7 @@ const openMenu = (menu, fade) => {
 		menuContainer.classList.add('show');
 		menu.classList.add('show');
 	}
-}
+};
 
 const closeMenu = (menu, fade) => {
 	if (fade) {
@@ -145,7 +139,7 @@ const closeMenu = (menu, fade) => {
 		menuContainer.classList.remove('show');
 		menu.classList.remove('show');
 	}
-}
+};
 
 const switchMenu = (currentMenu, nextMenu, fade) => {
 	if (fade) {
@@ -170,7 +164,7 @@ const switchMenu = (currentMenu, nextMenu, fade) => {
 		currentMenu.classList.remove('show');
 		nextMenu.classList.add('show');
 	}
-}
+};
 const addChosenWord = () => {
 	//ADDS CHOSEN WORD TO THE GAME SCREEN
 	chosenWord = inputBox.value.toLowerCase();
@@ -183,9 +177,9 @@ const addChosenWord = () => {
 		}
 	}
 	updateCurrentWord();
-}
+};
 
-const checkStoredWord = letter => {
+const checkStoredWord = (letter) => {
 	let doesLetterExist = false;
 	let sum = 0;
 
@@ -206,7 +200,7 @@ const checkStoredWord = letter => {
 	} else {
 		return LETTER_EXISTS;
 	}
-}
+};
 
 // dont need this function because i replaced the text input with an onscreen keyboard
 // kept for future reference
@@ -247,9 +241,9 @@ const updateCurrentWord = () => {
 
 	onScreenWord.textContent = updatedWord;
 	inputBox.value = '';
-}
+};
 
-const updateImage = lives => {
+const updateImage = (lives) => {
 	switch (lives) {
 		case 10:
 			onScreenLives.src = 'img/h1.png';
@@ -285,8 +279,7 @@ const updateImage = lives => {
 			onScreenLives.src = 'img/h11.png';
 			break;
 	}
-}
-
+};
 
 const playerWins = () => {
 	answer.textContent = '!!  ' + chosenWord + '  !!';
@@ -294,16 +287,15 @@ const playerWins = () => {
 	resultImage.src = 'img/you-win.gif';
 	livesRemaining.textContent = `With ${lives} lives remaining!`;
 	openMenu(postGameTab);
-}
+};
 
 const playerLoses = () => {
 	answer.textContent = '!!  ' + chosenWord + '  !!';
 	resultImage.src = 'img/you-LOSE.gif';
 	openMenu(postGameTab);
-}
+};
 
-const letterHandler = letter => {
-
+const letterHandler = (letter) => {
 	switch (checkStoredWord(letter)) {
 		case LETTER_EXISTS:
 			updateCurrentWord();
@@ -316,38 +308,18 @@ const letterHandler = letter => {
 			//something here
 			break;
 	}
-	
+
 	if (onScreenWord.textContent === chosenWord) {
 		playerWins();
 	} else if (lives === 0) {
 		playerLoses();
 	}
-}
-// const submitLetter = letter => {
-// 	switch (checkStoredWord(letter)) {
-// 		case LETTER_EXISTS:
-// 			updateCurrentWord();
-// 			break;
-// 		case LETTER_DOES_NOT_EXIST:
-// 			lives--;
-// 			updateImage(lives);
-// 			break;
-// 		case USED_LETTER:
-// 			//something here
-// 			break;
-// 	}
-// 	checkIfUserHasWon();
-	
-// }
-
-
+};
 
 // WHEN PAGE HAS LOADED ----------------------------------------------------------
-onScreenWord.textContent = '------'
+onScreenWord.textContent = '------';
 openMenu(gameSetupTab, true);
 addKeyboardEventListeners();
-
-
 
 // EVENT LISTENERS ---------------------------------------------------------------
 
