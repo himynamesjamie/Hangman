@@ -24,7 +24,6 @@ var resultImage = document.getElementById('result-image');
 
 let eventFunc = {};
 let keyboardObjects = [];
-let test = null;
 
 const USED_LETTER = 'used letter';
 const LETTER_EXISTS = 'letter exists';
@@ -69,7 +68,7 @@ const addKeyboardEventListeners = () => {
 		keyboardObjects[i].addEventListener(
 			'click',
 			(eventFunc = function () {
-				submitLetter(keyboardIds[i]);
+				letterHandler(keyboardIds[i]);
 				keyboardObjects[i].classList.add('letter-used');
 				keyboardObjects[i].classList.remove('letter');
 				usedLetters.push(keyboardObjects[i].textContent);
@@ -186,7 +185,7 @@ const addChosenWord = () => {
 	updateCurrentWord();
 }
 
-const checkStoredWord = (letter) => {
+const checkStoredWord = letter => {
 	let doesLetterExist = false;
 	let sum = 0;
 
@@ -250,7 +249,7 @@ const updateCurrentWord = () => {
 	inputBox.value = '';
 }
 
-const updateImage = (lives) => {
+const updateImage = lives => {
 	switch (lives) {
 		case 10:
 			onScreenLives.src = 'img/h1.png';
@@ -288,20 +287,23 @@ const updateImage = (lives) => {
 	}
 }
 
-const checkIfUserHasWon = () => {
-	if (onScreenWord.textContent === chosenWord) {
-		answer.textContent = '!!  ' + chosenWord + '  !!';
-		onScreenLives.src = 'img/welldone.png';
-		resultImage.src = 'img/you-win.gif';
-		livesRemaining.textContent = `With ${lives} lives remaining!`;
-		openMenu(postGameTab);
-	} else if (lives === 0) {
-		answer.textContent = '!!  ' + chosenWord + '  !!';
-		resultImage.src = 'img/you-LOSE.gif';
-		openMenu(postGameTab);
-	}
+
+const playerWins = () => {
+	answer.textContent = '!!  ' + chosenWord + '  !!';
+	onScreenLives.src = 'img/welldone.png';
+	resultImage.src = 'img/you-win.gif';
+	livesRemaining.textContent = `With ${lives} lives remaining!`;
+	openMenu(postGameTab);
 }
-const submitLetter = (letter) => {
+
+const playerLoses = () => {
+	answer.textContent = '!!  ' + chosenWord + '  !!';
+	resultImage.src = 'img/you-LOSE.gif';
+	openMenu(postGameTab);
+}
+
+const letterHandler = letter => {
+
 	switch (checkStoredWord(letter)) {
 		case LETTER_EXISTS:
 			updateCurrentWord();
@@ -314,9 +316,29 @@ const submitLetter = (letter) => {
 			//something here
 			break;
 	}
-	checkIfUserHasWon();
 	
+	if (onScreenWord.textContent === chosenWord) {
+		playerWins();
+	} else if (lives === 0) {
+		playerLoses();
+	}
 }
+// const submitLetter = letter => {
+// 	switch (checkStoredWord(letter)) {
+// 		case LETTER_EXISTS:
+// 			updateCurrentWord();
+// 			break;
+// 		case LETTER_DOES_NOT_EXIST:
+// 			lives--;
+// 			updateImage(lives);
+// 			break;
+// 		case USED_LETTER:
+// 			//something here
+// 			break;
+// 	}
+// 	checkIfUserHasWon();
+	
+// }
 
 
 
