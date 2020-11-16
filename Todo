@@ -1,0 +1,15 @@
+fix backdrop fade-out - doesnt fade out, instead just goes straight to not being visible
+
+add quitBtn functionality
+
+create landing page
+    transition to game screen
+
+
+    	/* transform: translateY(+500px);
+	transition: transform 0.5s ease-in-out; */
+
+    /* .letters-container .show-keyboard {
+	transform: translateY(0px);
+} */
+
