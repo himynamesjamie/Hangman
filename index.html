@@ -9,93 +9,96 @@
 		<link rel="stylesheet" href="styles/style.css" />
 	</head>
 	<body>
-			<nav>
-				<div></div>
-				<div class="nav-bar">
-					<ul>
-						<li id="pvp-btn">PVP</li>
-						<li id="pve-btn">PVE</li>
-					</ul>
-				</div>
-				<div class="quit">
-					<ul>
-						<li>Quit</li>
-					</ul>
-				</div>
-				
-			</nav>
-			<section class="container">
-				<div class="image-container">
-					<img draggable="false" id="image-id" src="img/hangman.png" />
-				</div>
+		<nav>
+			<div></div>
+			<div class="nav-bar">
+				<ul>
+					<li class="nav-btn" id="pvp-btn">PVP</li>
+					<li class="nav-btn" id="pve-btn">PVE</li>
+				</ul>
+			</div>
+			<div class="quit">
+				<ul>
+					<li class="nav-btn">Quit</li>
+				</ul>
+			</div>
+		</nav>
+		<section class="container">
+			<div class="image-container">
+				<img draggable="false" id="image-id" src="img/hangman.png" />
+			</div>
 
-				<div class="word-container">
-					<p class="noselect" id="on-screen-word"></p>
-				</div>
+			<div class="word-container">
+				<p class="noselect" id="on-screen-word"></p>
+			</div>
 
-				<div class="letters-container">
-					<div id="keyboard" class="keyboard">
-						<div class="letter noselect" id="c">c</div>
-						<div class="letter noselect" id="b">b</div>
-						<div class="letter noselect" id="a">a</div>
-						<div class="letter noselect" id="d">d</div>
-						<div class="letter noselect" id="e">e</div>
-						<div class="letter noselect" id="f">f</div>
-						<div class="letter noselect" id="g">g</div>
-						<div class="letter noselect" id="h">h</div>
-						<div class="letter noselect" id="i">i</div>
-						<div class="letter noselect" id="j">j</div>
-						<div class="letter noselect" id="k">k</div>
-						<div class="letter noselect" id="l">l</div>
-						<div class="letter noselect" id="m">m</div>
-						<div class="letter noselect" id="n">n</div>
-						<div class="letter noselect" id="o">o</div>
-						<div class="letter noselect" id="p">p</div>
-						<div class="letter noselect" id="q">q</div>
-						<div class="letter noselect" id="r">r</div>
-						<div class="letter noselect" id="s">s</div>
-						<div class="letter noselect" id="t">t</div>
-						<div class="letter noselect" id="u">u</div>
-						<div class="letter noselect" id="v">v</div>
-						<div class="letter noselect" id="w">w</div>
-						<div class="letter noselect" id="x">x</div>
-						<div class="letter noselect" id="y">y</div>
-						<div class="letter noselect" id="z">z</div>
-					</div>
+			<div class="letters-container">
+				<div id="keyboard" class="keyboard">
+					<div class="letter noselect" id="c">c</div>
+					<div class="letter noselect" id="b">b</div>
+					<div class="letter noselect" id="a">a</div>
+					<div class="letter noselect" id="d">d</div>
+					<div class="letter noselect" id="e">e</div>
+					<div class="letter noselect" id="f">f</div>
+					<div class="letter noselect" id="g">g</div>
+					<div class="letter noselect" id="h">h</div>
+					<div class="letter noselect" id="i">i</div>
+					<div class="letter noselect" id="j">j</div>
+					<div class="letter noselect" id="k">k</div>
+					<div class="letter noselect" id="l">l</div>
+					<div class="letter noselect" id="m">m</div>
+					<div class="letter noselect" id="n">n</div>
+					<div class="letter noselect" id="o">o</div>
+					<div class="letter noselect" id="p">p</div>
+					<div class="letter noselect" id="q">q</div>
+					<div class="letter noselect" id="r">r</div>
+					<div class="letter noselect" id="s">s</div>
+					<div class="letter noselect" id="t">t</div>
+					<div class="letter noselect" id="u">u</div>
+					<div class="letter noselect" id="v">v</div>
+					<div class="letter noselect" id="w">w</div>
+					<div class="letter noselect" id="x">x</div>
+					<div class="letter noselect" id="y">y</div>
+					<div class="letter noselect" id="z">z</div>
 				</div>
-			</section>
- 			<menu>
-				<div class="backdrop"></div>
-				<div id="menu-box" class="menu-box">
-					<div class="game-setup" id="game-setup">
-						<h2>Choose a word</h2>
-						<input id="input" type="text" autocomplete="off" />
+			</div>
+		</section>
+		<menu>
+			<div id="backdrop" class="backdrop"></div>
+			<div id="menu-box" class="menu-box">
+				<div class="game-setup" id="game-setup">
+					<h2>Choose a word</h2>
+					<input id="input" type="text" autocomplete="off" />
+					<div>
+						<p class="btn-white cancel" id="cancel__go">cancel</p>
 						<p class="btn-black go" id="go">Go</p>
 					</div>
-					<div class="post-game" id="post-game-tab">
-						<h2 id="result"></h2>
-						<div class="answer" id="answer"></div>
-						<div class="stats">
-							<p>Time taken - 2:34</p>
-							<p id="lives-remaining"></p>
-						</div>
-						<img id="result-image" src="" alt="" />
-						<p class="btn-black" id="play-again-btn">Play again</p>
+				</div>
+				<div class="post-game" id="post-game-tab">
+					<h2 id="result"></h2>
+					<div class="answer" id="answer"></div>
+					<div class="stats">
+						<p>Time taken - 2:34</p>
+						<p id="lives-remaining"></p>
 					</div>
-					<div class="quit-menu">
-						<h2>are you sure?</h2>
-						<div>
-							<p id="no" class="no-btn">no</p>
-							<p class="yes-btn">yes</p>
-						</div>
+					<img id="result-image" src="" alt=""/>
+					<p class="play-again">Play again?</p>
+					<div class="post-game__nav">
+						<p id="play-again__no" class="no-btn">no</p>
+						<p id="play-again__yes" class="yes-btn">yes</p>
+					</div>
+
+				</div>
+				<div class="quit-menu">
+					<h2>Are you sure?</h2>
+					<div>
+						<p id="quit__no" class="no-btn">no</p>
+						<p id="quit__yes" class="yes-btn">yes</p>
 					</div>
 				</div>
-				
-				
-				
-				
-			</menu>
+			</div>
+		</menu>
 
-		<script src="/app.js"></script>
+		<script src="js/app.js"></script>
 	</body>
 </html>

@@ -33,7 +33,7 @@ nav {
 	grid-template-columns: repeat(3, 1fr);
 	align-items: center;
 	border-bottom: #ededed solid 1px;
-	padding: 0 10px;
+	
 }
 
 nav .quit {
@@ -44,20 +44,24 @@ nav ul {
 }
 
 nav ul li {
-	color: #333;
+	
 	font-weight: bold;
 	margin: auto 0px;
-	padding: 0 10px;
-}
-
-nav ul li:hover {
-	background: #989898;
 	padding: 5px 10px;
-	color: #fcfcfc;
-	border-radius: 5px;
+	margin: 0 5px;
 }
 
-nav ul li:active {
+nav ul .nav-btn {
+	color: #333;
+}
+
+nav ul .nav-btn:hover {
+	background: #989898;
+	color: #fcfcfc;
+	border-radius: 7px;
+}
+
+nav ul .nev-btn:active {
 	background: #b1b1b1;
 }
 
@@ -68,11 +72,17 @@ nav .nav-bar {
 }
 
 nav .nav-bar ul {
+	padding: 5px 10px;
 	display: flex;
 	flex-direction: row;
 }
 nav .quit {
 	justify-self: end;
+}
+
+
+nav .active-nav {
+	opacity: 20%
 }
 .container {
 	margin-top: 30px;
@@ -236,8 +246,17 @@ menu .menu-box .game-setup input:focus {
 menu .menu-box .game-setup p {
 	font-size: 1.5rem;
 }
+
+menu .menu-box .game-setup div {
+	display: flex;
+	flex-direction: row;
+}
+
+menu .menu-box .game-setup .cancel {
+	
+}
 menu .menu-box .game-setup .go {
-	margin-top: 10px;
+	margin-left: 10px;
 }
 
 menu .menu-box .post-game {
@@ -260,9 +279,18 @@ menu .menu-box .post-game img {
 	height: 200px;
 	border: 2px solid #333;
 	border-radius: 20px;
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 }
 
+menu .menu-box .post-game .post-game__nav {
+	display: flex;
+	flex-direction: row;
+}
+
+menu .menu-box .post-game .play-again {
+	font-size: 1.5rem;
+	margin-bottom: 10px;
+}
 menu .menu-box .post-game .answer {
 	color: white;
 	background: #333;
@@ -293,42 +321,7 @@ menu .menu-box .quit-menu div {
 	text-align: center;
 }
 
-menu .menu-box .quit-menu .yes-btn {
-	margin: 0 5px;
-	font-size: 0.9rem;
-	font-weight: bold;
-	color: white;
-	background: #333333;
-	padding: 7px 30px;
-	border: #333 solid 2px;
-	text-transform: uppercase;
-	border-radius: 5px;
-	cursor: pointer;
-}
 
-menu .menu-box .quit-menu .no-btn {
-	margin: 0 5px;
-	font-size: 0.9rem;
-	font-weight: bold;
-	color: #333;
-	background: #fff;
-	padding: 7px 30px;
-	border: #333 solid 2px;
-	text-transform: uppercase;
-	border-radius: 5px;
-	cursor: pointer;
-}
-menu .menu-box .quit-menu .yes-btn:hover {
-	background: #49b146;
-	border: #49b146 solid 2px;
-	color: #333;
-}
-
-menu .menu-box .quit-menu .no-btn:hover {
-	background: #ff4949;
-	border: #ff4949 solid 2px;
-	color: #fff;
-}
 
 .btn-black {
 	font-weight: bold;
@@ -346,8 +339,9 @@ menu .menu-box .quit-menu .no-btn:hover {
 }
 
 .btn-black:hover {
-	background: #999;
-	border: #999 solid 2px;
+	/* background: #999;
+	border: #999 solid 2px; */
+	opacity: 40%;
 }
 
 .btn-white {
@@ -367,8 +361,48 @@ menu .menu-box .quit-menu .no-btn:hover {
 }
 
 .btn-white:hover {
-	background: #999;
+	/* background: #999;
 	border: #999 solid 2px;
+	color: #fff; */
+	opacity: 40%;
+
+}
+
+
+.yes-btn {
+	margin: 0 5px;
+	font-size: 0.9rem;
+	font-weight: bold;
+	color: white;
+	background: #333333;
+	padding: 7px 30px;
+	border: #333 solid 2px;
+	text-transform: uppercase;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.no-btn {
+	margin: 0 5px;
+	font-size: 0.9rem;
+	font-weight: bold;
+	color: #333;
+	background: #fff;
+	padding: 7px 30px;
+	border: #333 solid 2px;
+	text-transform: uppercase;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.yes-btn:hover {
+	background: #49b146;
+	border: #49b146 solid 2px;
+	color: #333;
+}
+
+.no-btn:hover {
+	background: #ff4949;
+	border: #ff4949 solid 2px;
 	color: #fff;
 }
 
@@ -381,6 +415,23 @@ menu .menu-box .quit-menu .no-btn:hover {
 	opacity: 100%;
 	transition: opacity 0.25s ease-in-out;
 }
+
+.hvr-fade {
+	display: inline-block;
+	vertical-align: middle;
+	-webkit-transform: perspective(1px) translateZ(0);
+	transform: perspective(1px) translateZ(0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+	overflow: hidden;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-transition-property: color, background-color;
+	transition-property: color, background-color;
+  }
+  .hvr-fade:hover, .hvr-fade:focus, .hvr-fade:active {
+	background-color: #2098D1;
+	color: white;
+  }
 
 .noselect {
 	-webkit-touch-callout: none; /* iOS Safari */

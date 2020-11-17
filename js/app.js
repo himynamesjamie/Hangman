@@ -3,20 +3,23 @@ let chosenWord = '';
 let chosenLetter = '';
 let lives = 11;
 let usedLetters = [];
+let gameMode = false;
 
 let result = document.getElementById('result');
 let livesRemaining = document.getElementById('lives-remaining');
+const cancelGo = document.getElementById('cancel__go');
+const playAgainYesBtn = document.getElementById('play-again__yes');
+const playAgainNoBtn = document.getElementById('play-again__no');
 
-// const quitNoBtn = document.getElementById('no');
 const wordContainer = document.querySelector('.word-container');
-
+const navBar = document.querySelector('.nav-bar ul').children;
 const quitMenu = document.querySelector('.quit-menu');
-const quitNoBtn = document.querySelector('.no-btn');
-const quitYesBtn = document.querySelector('.yes-btn');
+const quitNoBtn = document.querySelector('#quit__no');
+const quitYesBtn = document.querySelector('#quit__yes');
 const keyboard = document.getElementById('keyboard');
 const pvpBtn = document.getElementById('pvp-btn');
 const pveBtn = document.getElementById('pve-btn');
-const backdrop = document.querySelector('.backdrop');
+const backdrop = document.querySelector('#backdrop');
 const quitBtn = document.querySelector('.quit');
 const page = document.getElementById('page');
 const onScreenWord = document.getElementById('on-screen-word');
@@ -28,6 +31,8 @@ const postGameTab = document.getElementById('post-game-tab');
 const gameSetupTab = document.getElementById('game-setup');
 const answer = document.getElementById('answer');
 const menuBox = document.getElementById('menu-box');
+
+let currentMenu = null;
 
 var onScreenLives = document.getElementById('image-id');
 var resultImage = document.getElementById('result-image');
@@ -201,15 +206,15 @@ const addChosenWord = () => {
 	updateCurrentWord();
 };
 
-const showKeyboard = (PARAMETERS) => {
+const showKeyboard = () => {
 	keyboard.classList.add('show-keyboard');
 	wordContainer.classList.add('word-container__move');
-}
+};
 
-const hideKeyboard = (PARAMETERS) => {
+const hideKeyboard = () => {
 	keyboard.classList.remove('show-keyboard');
 	wordContainer.classList.remove('word-container__move');
-}
+};
 
 const removeClass = (element, className) => {
 	element.classList.remove(className);
@@ -261,8 +266,8 @@ const openMenu = (menu, size) => {
 };
 
 const closeMenu = () => {
-	addClass(backdrop, 'fade-out');
 	addClass(menuBox, 'fade-out');
+	addClass(backdrop, 'fade-out');
 
 	setTimeout(function () {
 		removeClassFromActiveMenu('show');
@@ -326,7 +331,7 @@ const addKeyboardEventListeners = () => {
 	}
 };
 
-const updateToUsedLetter = (letter) => {
+const deactivateLetter = (letter) => {
 	for (let i = 0; i < keyboardIds.length; i++) {
 		if (letter === keyboardIds[i]) {
 			keyboardObjects[i].classList.add('letter-used');
@@ -366,32 +371,42 @@ const quitYesBtnHandler = () => {
 	resetGame();
 	hideKeyboard();
 	quitBtn.classList.remove('show');
+	addClass(pvpBtn, 'nav-btn');
+	removeClass(pvpBtn, 'active-nav');
+	gameMode = false;
 	closeMenu();
 };
 
 const quitNoBtnHandler = () => {
 	closeMenu();
-	setTimeout(function () {
-		menuBox.style.removeProperty('width');
-		menuBox.style.removeProperty('height');
-	}, 250);
 };
 const quitBtnHandler = () => {
 	openMenu(quitMenu, SMALL);
-	
-	
 };
 
 const backdropHandler = () => {
-	closeMenu();
+	// closeMenu();
 };
 const pvpBtnHandler = () => {
-	openMenu(gameSetupTab);
+	if (!gameMode) {
+		openMenu(gameSetupTab);
+	}
 };
 
-const playAgainHandler = () => {
+const playAgainYesBtnHandler = () => {
 	switchMenu(gameSetupTab);
+	// alert('hello');
 };
+
+const playAgainNoBtnHandler = () => {
+	quitYesBtnHandler();
+};
+
+const cancelGoHandler = () => {
+	closeMenu();
+}
+
+
 
 const goHandler = () => {
 	if (inputBox.value) {
@@ -401,6 +416,9 @@ const goHandler = () => {
 		addChosenWord();
 		inputBox.placeholder = '';
 		showKeyboard();
+		addClass(pvpBtn, 'active-nav');
+		removeClass(pvpBtn, 'nav-btn');
+		gameMode = true;
 	} else {
 		inputBox.placeholder = 'please enter a word!';
 	}
@@ -419,7 +437,7 @@ const letterHandler = (letter) => {
 			//something here
 			break;
 	}
-	updateToUsedLetter(letter);
+	deactivateLetter(letter);
 	if (onScreenWord.textContent === chosenWord) {
 		playerWins();
 		resetGame();
@@ -437,10 +455,11 @@ onScreenWord.textContent = 'HANGMAN';
 
 goBtn.addEventListener('click', goHandler);
 
-playAgainBtn.addEventListener('click', playAgainHandler);
 pvpBtn.addEventListener('click', pvpBtnHandler);
-pveBtn.addEventListener('click', playAgainHandler);
 backdrop.addEventListener('click', backdropHandler);
 quitBtn.addEventListener('click', quitBtnHandler);
 quitNoBtn.addEventListener('click', quitNoBtnHandler);
 quitYesBtn.addEventListener('click', quitYesBtnHandler);
+playAgainNoBtn.addEventListener('click', playAgainNoBtnHandler);
+playAgainYesBtn.addEventListener('click', playAgainYesBtnHandler);
+cancelGo.addEventListener('click', cancelGoHandler);
